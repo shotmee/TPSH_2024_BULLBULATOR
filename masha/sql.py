@@ -22,4 +22,5 @@ class Feedback(Base):
     
     teacher = relationship("Teacher", back_populates="feedback")
 
+
 Base.metadata.create_all(engine)
