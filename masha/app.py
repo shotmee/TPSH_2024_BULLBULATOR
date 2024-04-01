@@ -6,6 +6,7 @@ from flask_login import login_user, current_user
 from templates.forms import LoginForm, RegisterForm
 from sql import *
 
+
 app = Flask(__name__)
 
 Session = sessionmaker(bind=engine)
