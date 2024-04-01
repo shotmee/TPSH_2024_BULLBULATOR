@@ -21,7 +21,7 @@ class Feedback(Base):
     rating = Column(Integer)
     text = Column(String)
     teacher_id = Column(Integer, ForeignKey('teachers.id'))
-    teacher = relationship("Teacher", back_populates="feedback")
+    teachers = relationship("Teacher", back_populates="feedback")
 
 class Users(Base):
     __tablename__ = 'users'
@@ -49,6 +49,13 @@ class Timetable(Base):
     wd = Column(String)
     numb = Column(Integer)
 
+class Feedback2(Base):
+    __tablename__ = 'feedback2'
+
+    idfb2 = Column(Integer, primary_key=True)
+    tt_id = Column(Integer)
+    rate0 = Column(Integer)
+    timetable = relationship("Timetable", back_populates="feedback2")
 
 
 Base.metadata.create_all(engine)
