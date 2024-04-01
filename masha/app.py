@@ -12,6 +12,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 @app.route("/")
+@app.route("/ShowTeachers")
 def index():
     teachers = session.query(Teacher).all()
     return render_template('index.html', teachers=teachers)
@@ -58,9 +59,6 @@ def signin():
 def profile():
     return ""
 
-@app.route("/showTeachers")
-def showTeachers():
-    return ""
 
 @app.route("/teachers/new", methods=['GET', 'POST'])
 def newTeacher():
@@ -72,7 +70,7 @@ def newTeacher():
     else:
         return render_template('newTeacher.html')
 
-@app.route("/teachers/<int:book_id/edit>", methods=['POST', 'GET'])
+@app.route("/teachers/<int:teachers_id>/edit", methods=['POST', 'GET'])
 def editTeacher(teacher_id):
     editedTeacher = session.query(Teacher).filtered_by(id=teacher_id).one()
     if request.method == 'POST':
