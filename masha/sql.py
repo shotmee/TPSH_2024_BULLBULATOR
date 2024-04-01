@@ -21,7 +21,7 @@ class Feedback(Base):
     rating = Column(Integer)
     text = Column(String)
     teacher_id = Column(Integer, ForeignKey('teachers.id'))
-    teachers = relationship("Teacher", back_populates="feedback")
+    teacher = relationship("Teacher", back_populates="feedback")
 
 class Users(Base):
     __tablename__ = 'users'
@@ -48,12 +48,15 @@ class Timetable(Base):
     grade = Column(Integer)
     wd = Column(String)
     numb = Column(Integer)
+    users = relationship("Users", back_populates="timetable")
+    subjects = relationship("Subjects", back_populates="timetable")
+    teachers = relationship("Teachers", back_populates="timetable")
 
 class Feedback2(Base):
     __tablename__ = 'feedback2'
 
-    idfb2 = Column(Integer, primary_key=True)
-    tt_id = Column(Integer)
+    id_fb2 = Column(Integer, primary_key=True)
+    timetable_id = Column(Integer)
     rate0 = Column(Integer)
     timetable = relationship("Timetable", back_populates="feedback2")
 
