@@ -1,8 +1,123 @@
-<h1>{{ teacher.name }}</h1>
-
-{% for feedback in teacher.feedback %}
-<div>
-  <p>Rating: {{ feedback.rating }}</p> 
-  <p>Feedback: {{ feedback.text }}</p>
-</div>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='teacher.css') }}">
+</head>
+<body>
+    <div class="head">
+        <img src="{{ url_for('static', filename='images/zhishi_logo02.png') }}" alt="" style="width: 300px; margin-left: 100px;">
+        <form action="/redirect1" method="get">
+            <a type="submit" href=""><img src="{{ url_for('static', filename='images/icon.jpeg') }}" alt="" class="photo"></a>
+        </form>
+    </div>
+    <div class="main">
+        <div class="cont">
+            <span><b style="font-size: 60px;">Преподаватели</b></span>
+            <button class="button" style="font-size: 35px; margin-top: 50px;">Учебное расписание</button>
+            <div class="search">
+                <input type="text" id="text" placeholder="Поиск преподавателя по ФИО" class="input">
+            </div>
+            <div class="teachers">
+                <a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a>
+                <a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a><a style="display:block" href="">
+                    <div class="teacher">
+                        <div class="icon" style="width: 200px; height: 200px; margin: 0;"></div>
+                        <span>Имя Фамилия</span>
+                        <span>Отчество  </span>
+                        <span style="color: rgb(87, 127, 201); font-weight: lighter;">ПРЕДМЕТ</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_code">
+        <div class="bottom">
+            <div class="bottom_left">
+                <img src="{{ url_for('static', filename='images/zhishi-logo04.png') }}" alt="" style="width: 300px;">
+                <div class="tg">
+                    <a href=""><img src="{{ url_for('static', filename='images/TG.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://www.dvfu.ru/institute_of_mathematics_and_computer_technologies/?ysclid=lukm5hzb75396925540"><img src="{{ url_for('static', filename='images/FEFU.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://ddodvfu.ru/"><img src="{{ url_for('static', filename='images/DDO.jpeg') }}" alt="" style="width: 60px;"></a>
+                </div>
+            </div>
+            <div class="bottom_right">
+                <span style="color: orange; font-size: 40px;">zhi-shi@dvfu.ru | 8 902 064-21-71 | ZHI-SHI</span>
+                <span style="font-size: 30px;">Всю свою жизнь прилежно учись. Каждый день становись более искусным, чем ты был за день до этого, а на следующий день – более искусным, чем сегодня. Совершенствование не имеет конца. </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

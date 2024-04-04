@@ -8,8 +8,10 @@
 </head>
 <body>
     <div class="head">
-        <img src="images/zhishi_logo02.png" alt="" style="width: 300px; margin-left: 100px;">
-        <img src="images/icon.jpeg" alt="" class="photo">
+        <img src="{{ url_for('static', filename='images/zhishi_logo02.png') }}" alt="" style="width: 300px; margin-left: 100px;">
+        <form action="/redirect1" method="get">
+            <a type="submit" href=""><img src="{{ url_for('static', filename='images/icon.jpeg') }}" alt="" class="photo"></a>
+        </form>
     </div>
     <div class="main">
         <div class="cont">  
@@ -106,17 +108,16 @@
     <div class="bottom_code">
         <div class="bottom">
             <div class="bottom_left">
-                <img src="images/zhishi-logo04.png" alt="" style="width: 300px;">
+                <img src="{{ url_for('static', filename='images/zhishi-logo04.png') }}" alt="" style="width: 300px;">
                 <div class="tg">
-                    <img src="images/TG.jpeg" alt="" style="width: 60px;">
-                    <img src="images/FEFU.jpeg" alt="" style="width: 60px;">
-                    <img src="images/DDO.jpeg" alt="" style="width: 60px;">
+                    <a href=""><img src="{{ url_for('static', filename='images/TG.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://www.dvfu.ru/institute_of_mathematics_and_computer_technologies/?ysclid=lukm5hzb75396925540"><img src="{{ url_for('static', filename='images/FEFU.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://ddodvfu.ru/"><img src="{{ url_for('static', filename='images/DDO.jpeg') }}" alt="" style="width: 60px;"></a>
                 </div>
             </div>
             <div class="bottom_right">
-                <span style="color: orange; font-size: 40px;">E-mail 00000 | 8 800 88888888 | Name</span>
-                <span style="font-size: 30px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-                    sed diam nonummy nibh euismod. </span>
+                <span style="color: orange; font-size: 40px;">zhi-shi@dvfu.ru | 8 902 064-21-71 | ZHI-SHI</span>
+                <span style="font-size: 30px;">Всю свою жизнь прилежно учись. Каждый день становись более искусным, чем ты был за день до этого, а на следующий день – более искусным, чем сегодня. Совершенствование не имеет конца. </span>
             </div>
         </div>
     </div>

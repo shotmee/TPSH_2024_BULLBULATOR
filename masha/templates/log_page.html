@@ -9,7 +9,7 @@
 <body>
     <div class="background">
         <div class="logo">
-            <img src="images/zhishi_logo03.png" alt="" style="width: 300px;">
+            <img src="{{ url_for('static', filename='images/zhishi_logo03.png') }}" alt="" style="width: 300px;">
         </div>
         <div class="auth">
             <input type="text" placeholder="E-mail" class="input">
@@ -17,6 +17,24 @@
             <form action="/redirect1" method="get">
                 <button class="button" type="submit" style="font-size: 35px;">Войти </button>
             </form>
+        </div>
+    </div>
+<div class="bottom_code">
+        <div class="bottom">
+            <div class="bottom_left">
+                <img src="{{ url_for('static', filename='images/zhishi-logo04.png') }}" alt="" style="width: 300px;">
+                <div class="tg">
+                    <a href=""><img src="{{ url_for('static', filename='images/TG.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://www.dvfu.ru/institute_of_mathematics_and_computer_technologies/?ysclid=lukm5hzb75396925540"><img src="{{ url_for('static', filename='images/FEFU.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://ddodvfu.ru/"><img src="{{ url_for('static', filename='images/DDO.jpeg') }}" alt="" style="width: 60px;"></a>
+                </div>
+            </div>
+            <div class="bottom_right">
+                <span style="color: orange; font-size: 40px;">
+                    zhi-shi@dvfu.ru | 8 902 064-21-71 | ZHI-SHI</span>
+                <span style="font-size: 30px;">
+                    Всю свою жизнь прилежно учись. Каждый день становись более искусным, чем ты был за день до этого, а на следующий день – более искусным, чем сегодня. Совершенствование не имеет конца.</span>
+            </div>
         </div>
     </div>
 </body>

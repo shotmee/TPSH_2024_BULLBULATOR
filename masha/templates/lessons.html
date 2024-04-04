@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>subject rate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lessons.css') }}">
+</head>
+<body>
+    <div class="head">
+        <img src="{{ url_for('static', filename='images/zhishi_logo02.png') }}" alt="" style="width: 300px; margin-left: 100px;">
+        <form action="/redirect1" method="get">
+            <a type="submit" href=""><img src="{{ url_for('static', filename='images/icon.jpeg') }}" alt="" class="photo"></a>
+        </form>
+    </div>
+    <div class="main">
+        <div class="cont_left">
+            <div class="icon"></div>
+            <div class="classes">
+                <span><b>КЛАССЫ</b></span>
+                <span>класс</span>
+                <span>класс</span>
+                <span>класс</span>
+                <span>класс</span>
+            </div>
+        </div>
+        <div class="cont_right">
+            <div class="up">
+                <span><b style="font-size: 60px; color: rgb(80, 80, 80);">Предмет</b></span>
+                <div class="up_left">
+                    <a href=""><span style="color: rgb(126, 126, 126);">ПЕДАГОГИ</span></a>
+                    <select name="select" size="1" class="select" onchange="window.location.href = this.options[this.selectedIndex].value">
+                        <option selected value="">ПРЕДМЕТЫ</option>
+                        <option value="">Предмет</option>
+                        <option value="">Предмет</option>
+                        <option value="">Предмет</option>
+                        <option value="">Предмет</option>
+                    </select>
+                </div>
+            </div>
+            <div class="rate">
+                <span><b style="font-size: 40px;">Оценка урока</b></span>
+                <div class="line"></div>
+                <div class="star">
+                    <div class="sel">
+                        <input type="radio" id="star1" name="star" value="1" />
+                        <label for="star1">1</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star2" name="star" value="2" />
+                        <label for="star2">2</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star3" name="star" value="1" />
+                        <label for="star3">3</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star4" name="star" value="2" />
+                        <label for="star4">4</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star5" name="star" value="1" />
+                        <label for="star5">5</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star6" name="star" value="2" />
+                        <label for="star6">6</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star7" name="star" value="1" />
+                        <label for="star7">7</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star8" name="star" value="2" />
+                        <label for="star8">8</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star9" name="star" value="1" />
+                        <label for="star9">9</label>
+                    </div>
+                    <div class="sel">
+                        <input type="radio" id="star10" name="star" value="2"/>
+                        <label for="star10">10</label>
+                    </div>
+                </div>
+                <button class="button" style="font-size: 35px;">Проголосовать</button>
+            </div>
+            <div class="rate">
+                <span><b style="font-size: 40px;">Доступность учебного материала</b></span>
+                <textarea name="text" class="input" placeholder="Расскажите чуть больше..."></textarea>
+            </div>
+            <div class="rate">
+                <span><b style="font-size: 40px;">Объективность оценок</b></span>
+                <textarea name="text" class="input" placeholder="Расскажите чуть больше..."></textarea>
+            </div>
+            <div class="rate">
+                <span><b style="font-size: 40px;">Творческий подход</b></span>
+                <textarea name="text" class="input" placeholder="Расскажите чуть больше..."></textarea>
+            </div>
+            <div class="rate">
+                <span><b style="font-size: 40px;">Глубина подачи учебного материала</b></span>
+                <textarea name="text" class="input" placeholder="Расскажите чуть больше..."></textarea>
+            </div>
+            <div class="rate">
+                <span><b style="font-size: 40px;">Юмор</b></span>
+                <textarea name="text" class="input" placeholder="Расскажите чуть больше..."></textarea>
+            </div>
+            <button class="button" style="font-size: 35px;width: 240px; ">Отправить</button>
+        </div>
+    </div>
+    <div class="bottom_code">
+        <div class="bottom">
+            <div class="bottom_left">
+                <img src="{{ url_for('static', filename='images/zhishi-logo04.png') }}" alt="" style="width: 300px;">
+                <div class="tg">
+                    <a href=""><img src="{{ url_for('static', filename='images/TG.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://www.dvfu.ru/institute_of_mathematics_and_computer_technologies/?ysclid=lukm5hzb75396925540"><img src="{{ url_for('static', filename='images/FEFU.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://ddodvfu.ru/"><img src="{{ url_for('static', filename='images/DDO.jpeg') }}" alt="" style="width: 60px;"></a>
+                </div>
+            </div>
+            <div class="bottom_right">
+                <span style="color: orange; font-size: 40px;">zhi-shi@dvfu.ru | 8 902 064-21-71 | ZHI-SHI</span>
+                <span style="font-size: 30px;">Всю свою жизнь прилежно учись. Каждый день становись более искусным, чем ты был за день до этого, а на следующий день – более искусным, чем сегодня. Совершенствование не имеет конца. </span>
+            </div>
+        </div>
+    </div>
+</body>

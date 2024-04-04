@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 @font-face {
     font-family: 'MyriadPro';
     src: local('MyriadPro'),
@@ -9,7 +14,7 @@
 }
 
 .head{
-    width: 100%;
+    width: auto;
     height: 250px;
     background-image: url(images/img2.jpeg);
     background-repeat: no-repeat;
@@ -24,15 +29,8 @@
     border-radius: 50%;
     margin-right: 100px;
 }
-.icon{
-    width: 70px;
-    height: 70px;
-    background-color: grey;
-    border-radius: 50%;
-    margin-right: 100px;
-}
 .main{
-    width: 100%;
+    width: auto;
     height: 1800px;
     background-color: rgb(241, 237, 229);
     display: flex;
@@ -40,7 +38,7 @@
     justify-content: center;
 }
 .cont{
-    width: 2000px;
+    width: 80vw;
     height: 1100px;
     display: flex;
     align-items: flex-start;
@@ -50,14 +48,14 @@
 }
 .tab{
     height: 100px;
-    width: 1900px;
+    width: 80vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
 }
 .id{
-    width: 1900px;
+    width: 80vw;
     height: 90px;
     background-color: white;
     -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -71,15 +69,15 @@
 }
 .inside{
     height: 600px;
-    width: 1900;
+    width: 80vw;
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
     flex-direction: column;
-}   
+}
 input[type="text"] {
-    padding-left: 40px; /* Отступ слева, чтобы текст не накладывался на иконку */
-    width: 1900px;
+    padding-left: 40px;
+    width: 80vw;
     height: 90px;
     border: none;
     border-radius: 50px;
@@ -90,7 +88,7 @@ input[type="text"] {
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 .button{
-    width: 900px;
+    width: 35vw;
     height: 90px;
     border: none;
     border-radius: 50px;
@@ -113,33 +111,36 @@ input[type="text"] {
 }
 .bottom_code{
     height: 400px;
-    width: 100%;
+    width: auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .bottom{
     height: 300px;
-    width: 2000px;
+    width: 90vw;
     display: flex;
     align-content: space-evenly;
     justify-content: center;
 }
 .bottom_right{
+    margin-top: 17px;
     height: 300px;
-    width: 1000px;
+    width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 .bottom_left{
     height: 300px;
-    width: 800px;
+    width: 40vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 .tg{
     height: 30px;
-    width: 450px;
+    width: 18vw;
     display: flex;
     align-items: center;
     justify-content: space-between;

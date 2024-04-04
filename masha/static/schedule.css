@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 @font-face {
     font-family: 'MyriadPro';
     src: local('MyriadPro'),
@@ -9,7 +13,7 @@
 }
 
 .head{
-    width: 100%;
+    width: auto;
     height: 250px;
     background-image: url(images/img2.jpeg);
     background-repeat: no-repeat;
@@ -32,7 +36,7 @@
     margin-right: 100px;
 }
 .main{
-    width: 100%;
+    width: auto;
     height: 3300px;
     background-color: rgb(241, 237, 229);
     display: flex;
@@ -40,7 +44,7 @@
     justify-content: center;
 }
 .cont{
-    width: 2000px;
+    width: 80vw;
     height: 3200px;
     display: flex;
     align-items: flex-start;
@@ -49,7 +53,7 @@
     padding-top: 100px;
 }
 .button{
-    width: 2000px;
+    width: 80vw;
     height: 90px;
     border: none;
     border-radius: 50px;
@@ -66,8 +70,12 @@
     justify-content: flex-start;
     transition: 0.5s;
 }
+.button:hover{
+    background-color: rgb(255, 136, 0);
+    transition: 0.5s;
+}
 .schedule{
-    width: 1900px;
+    width: 70vw;
     height: 2700px;
     display: flex;
     align-items: flex-start;
@@ -75,7 +83,7 @@
 }
 td{
     height: 90px;
-    width: 1500px;
+    width: 60vw;
     padding-left: 60px;
 }
 tr:nth-child(odd) {
@@ -86,37 +94,36 @@ tr:nth-child(even) {
 }
 .bottom_code{
     height: 400px;
-    width: 100%;
+    width: auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .bottom{
     height: 300px;
-    width: 2000px;
+    width: 90vw;
     display: flex;
     align-content: space-evenly;
     justify-content: center;
 }
 .bottom_right{
+    margin-top: 17px;
     height: 300px;
-    width: 1000px;
+    width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 .bottom_left{
     height: 300px;
-    width: 800px;
+    width: 40vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
-.button:hover{
-    background-color: rgb(255, 136, 0);
-    transition: 0.5s;
-}
 .tg{
     height: 30px;
-    width: 450px;
+    width: 18vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
