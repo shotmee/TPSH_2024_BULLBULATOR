@@ -9,6 +9,7 @@ class FDataBase:
         self.__db = db
         self.__cur = db.cursor()
 
+#Не используется
     def getMenu(self):
         sql = '''SELECT * FROM mainmenu'''
         try:

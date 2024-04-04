@@ -37,6 +37,21 @@ def load_user(user_id):
     print("load_user")
     return UserLogin().fromDB(user_id, dbase)
 
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('profile'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = dbase.getUserByEmail(form.email.data)
+        if user and check_password_hash(user['psw'], form.psw.data):
+            userlogin = UserLogin().create(user)
+            rm = form.remember.data
+            login_user(userlogin, remember=rm)
+            return redirect(request.args.get("next") or url_for("profile"))
+        flash("Неверная пара логин/пароль", "error")
+    return render_template("log_page.html", title="Авторизация", form=form)   
+#    return render_template("log_page.html", menu=dbase.getMenu(), title="Авторизация", form=form)
 
 def connect_db():
     conn = sqlite3.connect(app.config['DATABASE'])
@@ -108,30 +123,11 @@ def view_teacher(teacher_id):
     teacher = session.query(Teacher).get(teacher_id)
     return render_template('teacher.html', teacher=teacher)
 
-@app.route("/login", methods=["POST", "GET"])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('profile'))
-
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = dbase.getUserByEmail(form.email.data)
-        if user and check_password_hash(user['psw'], form.psw.data):
-            userlogin = UserLogin().create(user)
-            rm = form.remember.data
-            login_user(userlogin, remember=rm)
-            return redirect(request.args.get("next") or url_for("profile"))
-
-        flash("Неверная пара логин/пароль", "error")
-
-    return render_template("log_page.html", menu=dbase.getMenu(), title="Авторизация", form=form)
-
-
-
 @app.route("/profile")
 @login_required
 def profile():
-    return render_template("cabinet.html", menu=dbase.getMenu(), title="Профиль")
+    return render_template("cabinet.html", title="Профиль")
+#    return render_template("cabinet.html", menu=dbase.getMenu(), title="Профиль")
 
 
 @app.route("/teachers/new", methods=['GET', 'POST'])
