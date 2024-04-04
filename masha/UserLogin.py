@@ -16,6 +16,12 @@ class UserLogin(UserMixin):
     def getName(self):
         return self.__user['name'] if self.__user else "Без имени"
 
+    def getEmail(self):
+        return self.__user['email'] if self.__user else "Без email"
 
 
-
+    def verifyExt(self, filename):
+        ext = filename.rsplit('.', 1)[1]
+        if ext == "png" or ext == "PNG":
+            return True
+        return False
