@@ -113,6 +113,9 @@ def redirect_page2():
 def redirect_page3():
     return redirect('/schedule')
 
+@app.route('/redirect4', methods=['GET'])
+def redirect_page4():
+    return redirect('/<int:teacher_id>')
 
 @app.route('/schedule')
 def schedule():
@@ -128,27 +131,6 @@ def view_teacher(teacher_id):
 def profile():
     return render_template("cabinet.html", title="Профиль")
 #    return render_template("cabinet.html", menu=dbase.getMenu(), title="Профиль")
-
-#Не используется
-@app.route("/teachers/new", methods=['GET', 'POST'])
-def newTeacher():
-    if request.method == 'POST':
-        newTeacher = Teacher(name=request.form['fio'])
-        session.add(newTeacher)
-        session.commit()
-        return redirect(url_for('showTeachers'))
-    else:
-        return render_template('newTeacher.html', title="information")
-
-@app.route("/teachers/<int:teachers_id>/edit", methods=['POST', 'GET'])
-def editTeacher(teacher_id):
-    editedTeacher = session.query(Teacher).filtered_by(id=teacher_id).one()
-    if request.method == 'POST':
-        if request.form['name']:
-            editedTeacher.title = request.form['name']
-            return redirect(url_for('showTeachers'))
-    else:
-        return render_template('editTeacher.html', teacher=editedTeacher)
 
 
 if __name__ == "__main__":
