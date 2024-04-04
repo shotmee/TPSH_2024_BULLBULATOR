@@ -14,10 +14,13 @@ DATABASE = '/tmp/dbase.db'
 DEBUG = True
 MAX_CONTENT_LENGTH = 1024 * 1024
 
+SECRET_KEY = os.urandom(32)
+
 HOST_NAME = "localhost"
 HOST_PORT = 80
 app = Flask(__name__, static_folder='static')
 app.config.from_object(__name__)
+app.config['SECRET_KEY'] = SECRET_KEY
 app.config.update(dict(DATABASE=os.path.join(app.root_path,'dbase.db')))
 
 Session = sessionmaker(bind=engine)
