@@ -99,19 +99,19 @@ def index():
 
 @app.route('/redirect', methods=['GET'])
 def redirect_page():
-    return redirect('/login') # перенаправляем на другую страницу
+    return redirect('/login')
 
 @app.route('/redirect1', methods=['GET'])
 def redirect_page1():
-    return redirect('/profile') # перенаправляем на другую страницу
+    return redirect('/profile')
 
 @app.route('/redirect2', methods=['GET'])
 def redirect_page2():
-    return redirect('/ShowTeachers') # перенаправляем на другую страницу
+    return redirect('/ShowTeachers')
 
 @app.route('/redirect3', methods=['GET'])
 def redirect_page3():
-    return redirect('/schedule') # перенаправляем на другую страницу
+    return redirect('/schedule')
 
 
 @app.route('/schedule')
@@ -124,12 +124,12 @@ def view_teacher(teacher_id):
     return render_template('teacher.html', teacher=teacher)
 
 @app.route("/profile")
-@login_required
+#@login_required
 def profile():
     return render_template("cabinet.html", title="Профиль")
 #    return render_template("cabinet.html", menu=dbase.getMenu(), title="Профиль")
 
-
+#Не используется
 @app.route("/teachers/new", methods=['GET', 'POST'])
 def newTeacher():
     if request.method == 'POST':

@@ -20,9 +20,6 @@ class FDataBase:
             print("Ошибка чтения из БД")
         return []
 
-
-
-
     def getUser(self, user_id):
         try:
             self.__cur.execute(f"SELECT * FROM users WHERE id = {user_id} LIMIT 1")
