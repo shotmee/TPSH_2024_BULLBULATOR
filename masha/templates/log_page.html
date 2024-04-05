@@ -12,10 +12,10 @@
             <img src="{{ url_for('static', filename='images/zhishi_logo03.png') }}" alt="" style="width: 300px;">
         </div>
         <div class="auth">
-            <input type="text" placeholder="E-mail" class="input">
-            <input type="text" placeholder="Password" class="input">
-            <form action="/redirect1" method="get">
-                <button class="button" type="submit" style="font-size: 35px;">Войти </button>
+            <form method="POST">
+                <input class="input" type="text" id="username" name="username" placeholder="Username"><br>
+                <input class="input" type="password" id="password" name="password" placeholder="Password"><br>
+                <input class="button" type="submit" value="Войти">
             </form>
         </div>
     </div>
