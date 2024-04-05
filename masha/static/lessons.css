@@ -33,7 +33,7 @@ body {
 }
 .main{
     width: auto;
-    height: 3600px;
+    height: fit-content;
     background-color: rgb(241, 237, 229);
     display: flex;
     align-items: flex-start;
@@ -41,25 +41,16 @@ body {
 }
 .cont_left{
     width: 20vw;
-    height: 800px;
+    height: fit-content;
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
     flex-direction: column;
     padding-top: 100px;
 }
-.icon{
-    width: 300px;
-    height: 300px;
-    border-radius: 20px;
-    background-color: grey;
-    -webkit-box-shadow: 4px 4px 12px 5px rgba(34, 60, 80, 0.23);
-    -moz-box-shadow: 4px 4px 12px 5px rgba(34, 60, 80, 0.23);
-    box-shadow: 4px 4px 12px 5px rgba(34, 60, 80, 0.23);
-}
 .classes{
     width: 50vw;
-    height: 300px;
+    height: fit-content;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -96,6 +87,7 @@ body {
     -webkit-box-shadow: 4px 4px 12px 5px rgba(34, 60, 80, 0.23);
     -moz-box-shadow: 4px 4px 12px 5px rgba(34, 60, 80, 0.23);
     box-shadow: 4px 4px 12px 5px rgba(34, 60, 80, 0.23);
+    cursor: pointer;
 }
 .up_left{
     height: 50px;
@@ -193,14 +185,6 @@ body {
     justify-content: space-between;
     flex-direction: row;
 }
-.star{
-    height: 40px;
-    width: 52vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-}
 .sel{
     height: 40px;
     width: 5vw;
@@ -209,9 +193,49 @@ body {
     justify-content: center;
     flex-direction: column;
 }
-input[type=radio] {
-    transform: scale(2);
+.rating-area {
+    width: 12vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+	overflow: hidden;
+	margin-left: 12vw;
+    transform: scale(3);
 }
-label{
-    margin-top: 15px;
+.rating-area:not(:checked) > input {
+	display: none;
+}
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 42px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 32px;
+	line-height: 32px;
+	color: lightgrey;
+    transition: 0.3s;
+}
+.rating-area:not(:checked) > label:before {
+	content: '★';
+}
+.rating-area > input:checked ~ label {
+	color: orange   ;
+    transition: 0.3s;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	color: gold;
+    transition: 0.3s;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	color: gold;
+
+}
+.rate-area > label:active {
+	position: relative;
 }

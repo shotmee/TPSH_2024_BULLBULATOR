@@ -28,16 +28,9 @@ body {
     border-radius: 50%;
     margin-right: 100px;
 }
-.icon{
-    width: 70px;
-    height: 70px;
-    background-color: grey;
-    border-radius: 50%;
-    margin-right: 100px;
-}
 .main{
     width: auto;
-    height: 3300px;
+    height: fit-content;
     background-color: rgb(241, 237, 229);
     display: flex;
     align-items: flex-start;
@@ -45,7 +38,7 @@ body {
 }
 .cont{
     width: 80vw;
-    height: 3200px;
+    height: fit-content;
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
@@ -70,16 +63,13 @@ body {
     justify-content: flex-start;
     transition: 0.5s;
 }
-.button:hover{
-    background-color: rgb(255, 136, 0);
-    transition: 0.5s;
-}
 .schedule{
     width: 70vw;
-    height: 2700px;
+    height: fit-content;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    margin-bottom: 70px;
 }
 td{
     height: 90px;

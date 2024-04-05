@@ -1,13 +1,9 @@
 import sqlite3
 import os
 from UserLogin import UserLogin
-from flask import Flask, render_template, request, flash, g, redirect, url_for
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask import Flask, render_template, request, g, redirect
+from flask_login import LoginManager
 from FDataBase import FDataBase
-from sqlalchemy.orm import sessionmaker
-from werkzeug.security import check_password_hash
-from flask_login import login_user, current_user
-from templates.forms import LoginForm
 from sql import *
 
 DATABASE = '/tmp/dbase.db'
@@ -54,7 +50,7 @@ def login():
         if user:
             return redirect('/profile')
         else:
-            return "Неверное имя пользователя или пароль"
+            return "<p> color: red;'> Неверное имя пользователя или пароль </p>"
 
     return render_template('log_page.html')
 
@@ -131,6 +127,11 @@ def schedule():
 def view_teacher(teacher_id):
     teacher = session.query(Teacher).get(teacher_id)
     return render_template('teacher.html', teacher=teacher)
+
+@app.route('/<int:teacher_id>/feedback')
+def view_teacher(teacher_id):
+    teacher = session.query(Teacher).get(teacher_id)
+    return render_template('teacher2.html', teacher=teacher)
 
 @app.route("/profile")
 #@login_required
