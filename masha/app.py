@@ -88,14 +88,6 @@ def close_db(error):
     if hasattr(g, 'link_db'):
         g.link_db.close()
 
-@app.route("/")
-def main():
-    return render_template('main_page.html')
-
-@app.route("/ShowTeachers")
-def index():
-    teachers = session.query(Teacher).all()
-    return render_template('teachers_page.html', teachers=teachers)
 
 @app.route('/redirect', methods=['GET'])
 def redirect_page():
@@ -117,6 +109,15 @@ def redirect_page3():
 def redirect_page4():
     return redirect('/<int:teacher_id>')
 
+@app.route("/")
+def main():
+    return render_template('main_page.html')
+
+@app.route("/ShowTeachers")
+def index():
+    teachers = session.query(Teacher).all()
+    return render_template('teachers_page.html', teachers=teachers)
+
 @app.route('/schedule')
 def schedule():
     return render_template('schedule.html')
@@ -132,6 +133,9 @@ def profile():
     return render_template("cabinet.html", title="Профиль")
 #    return render_template("cabinet.html", menu=dbase.getMenu(), title="Профиль")
 
+@app.route("/<int:lesson_id>")
+def lesson():
+    return render_template("lessons.html", title="Оценка занятия")
 
 if __name__ == "__main__":
     app.run(debug=True)

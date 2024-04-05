@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <link rel="stylesheet" href="comment.css">
+</head>
+<body>
+    <div class="head">
+        <img src="{{ url_for('static', filename='images/zhishi_logo02.png') }}" alt="" style="width: 300px; margin-left: 100px;">
+        <form action="/redirect1" method="get">
+            <button type="submit" style="border: none; background: none; padding: 0;">
+                <a href="/profile"><img src="{{ url_for('static', filename='images/icon.jpeg') }}" alt="" class="photo"></a>
+            </button>
+        </form>
+    </div>
+    <div class="main">
+        <div class="cont_left">
+            <div class="icon"></div>
+            <span><b>ПРЕДМЕТ</b></span>
+            <span><b>СТАЖ</b> 10 лет</span>
+            <div class="classes">
+                <span><b>КЛАССЫ</b></span>
+                <span>класс</span>
+                <span>класс</span>
+                <span>класс</span>
+                <span>класс</span>
+            </div>
+        </div>
+        <div class="cont_right">
+            <div class="up">
+                <span><b style="font-size: 60px; color: rgb(80, 80, 80); margin-top: 100px;">Имя преподавателя</b></span>
+                <div class="up_left">
+                    <a href=""><span style="color: rgb(126, 126, 126);">ПРЕДМЕТЫ</span></a>
+                    <select name="select" size="1" class="select" onchange="window.location.href = this.options[this.selectedIndex].value">
+                        <option selected value="">ПЕДАГОГИ</option>
+                        <option value="">Учитель</option>
+                        <option value="">Учитель</option>
+                        <option value="">Учитель</option>
+                        <option value="">Учитель</option>
+                    </select>
+                </div>
+            </div>
+            <div class="rate" style="flex-direction: column; justify-content: space-evenly; margin-top: 100px; margin-bottom: 0;">
+                <span style="font-size: 45px; color: gray; margin-bottom: 30px;">Информация о преподавателе</span>
+                <span style="font-size: 33px;">Ассистент. Окончила кафедру ПФ и аспирантуру ПФФ. Занимается задачами передачи энергии. Работает в школе с 2012 г. По информации с официального сайта школы преподаёт сразу несколько дисциплин.</span>
+            </div>
+            <span style="margin: 80px 0;"><b style="font-size: 60px; color: rgb(80, 80, 80);">Отзывы</b></span>
+            <div class="rate">
+                <div class="rate_right">
+                    <span style="font-size: 40px; color: rgb(120, 96, 177); margin-bottom: 20px;">Ираклий</span>
+                    <span style="margin-bottom: 20px;">Лучший преподаватель, был лектором, на экзамене принял ну очень лояльно, может вытянуть</span>
+                    <div class="rate_bottom">
+                        <div class="stars">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                        </div>
+                        <span style="color: lightgrey;">01 мая в 16:36</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rate">
+                <div class="rate_right">
+                    <span style="font-size: 40px; color: rgb(120, 96, 177); margin-bottom: 20px;">ofelia</span>
+                    <span style="margin-bottom: 20px;">Один из лучших преподавателей. Во-первых: знания
+                        обеспечены. Материал подает легко и очень понятно.
+                        Отношение к ученикам: что сказать... И пошутить может, и
+                        посмеяться, и поругаться, если есть за что.
+                        </span>
+                    <div class="rate_bottom">
+                        <div class="stars">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                        </div>
+                        <span style="color: lightgrey;">24 января в 17:04</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rate">
+                <div class="rate_right">
+                    <span style="font-size: 40px; color: rgb(120, 96, 177); margin-bottom: 20px;">Сигизмунд</span>
+                    <span style="margin-bottom: 20px;">Превосходный преподаватель, рекомендую на физру идти
+                        именно к нему. Оздоровительные плавание, спецмед.
+                        Каждый семестр записывался только к нему. Он же точно
+                        физру ведет? А то я на удаленке</span>
+                    <div class="rate_bottom">
+                        <div class="stars">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                        </div>
+                        <span style="color: lightgrey;">24 января в 17:04</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rate">
+                <div class="rate_right">
+                    <span style="font-size: 40px; color: rgb(120, 96, 177); margin-bottom: 20px;">newbe</span>
+                    <span style="margin-bottom: 20px;">я потратила на него 120 страниц бумаги.
+                    </span>
+                    <div class="rate_bottom">
+                        <div class="stars">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                        </div>
+                        <span style="color: lightgrey;">24 января в 17:04</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rate">
+                <div class="rate_right">
+                    <span style="font-size: 40px; color: rgb(120, 96, 177); margin-bottom: 20px;">tigidik_digdig</span>
+                    <span style="margin-bottom: 20px;">Вёл лекции. Рассказывал интересные истории на свой лад со своим мнением. В целом на лекциях спать можно.</span>
+                    <div class="rate_bottom">
+                        <div class="stars">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                        </div>
+                        <span style="color: lightgrey;">24 января в 17:04</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rate">
+                <div class="rate_right">
+                    <span style="font-size: 40px; color: rgb(120, 96, 177); margin-bottom: 20px;">ОЛежа</span>
+                    <span style="margin-bottom: 20px;">Сомнительно, но Окэй...</span>
+                    <div class="rate_bottom">
+                        <div class="stars">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                        </div>
+                        <span style="color: lightgrey;">24 января в 17:04</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rate">
+                <div class="rate_right">
+                    <span style="font-size: 40px; color: rgb(120, 96, 177); margin-bottom: 20px;">nikita</span>
+                    <span style="margin-bottom: 20px;">На контрольной просто списать не получится, будут доп
+                        вопросы, но валить не будет. Берегите препода, таких мало)</span>
+                    <div class="rate_bottom">
+                        <div class="stars">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                            <img src="{{ url_for('static', filename='images/star.jpeg') }}" alt="" style="width: 3vw;">
+                        </div>
+                        <span style="color: lightgrey;">24 января в 17:04</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_code">
+        <div class="bottom">
+            <div class="bottom_left">
+                <img src="{{ url_for('static', filename='images/zhishi-logo04.png') }}" alt="" style="width: 300px;">
+                <div class="tg">
+                    <a href=""><img src="{{ url_for('static', filename='images/TG.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://www.dvfu.ru/institute_of_mathematics_and_computer_technologies/?ysclid=lukm5hzb75396925540"><img src="{{ url_for('static', filename='images/FEFU.jpeg') }}" alt="" style="width: 60px;"></a>
+                    <a href="https://ddodvfu.ru/"><img src="{{ url_for('static', filename='images/DDO.jpeg') }}" alt="" style="width: 60px;"></a>
+                </div>
+            </div>
+            <div class="bottom_right">
+                <span style="color: orange; font-size: 40px;">zhi-shi@dvfu.ru | 8 902 064-21-71 | ZHI-SHI</span>
+                <span style="font-size: 30px;">Всю свою жизнь прилежно учись. Каждый день становись более искусным, чем ты был за день до этого, а на следующий день – более искусным, чем сегодня. Совершенствование не имеет конца. </span>
+            </div>
+        </div>
+    </div>
+</body>
