@@ -138,15 +138,15 @@ def schedule():
 def view_teacher(teacher_id):
     teacher = teachers.query.filter_by(teacher_id).first()
 
-    
+
     return render_template('teacher.html', teacher=teacher)
 
-# Необходимо починить
-# @app.route('/<int:teacher_id>/feedback')
-# @login_required
-# def view_teacher(teacher_id):
-#     teacher = Teacher.query.filter_by(teacher_id).first()
-#     return render_template('teacher2.html', teacher=teacher)
+
+@app.route('/<int:teacher_id>/feedback')
+@login_required
+def view_teacher(teacher_id):
+    teacher = teachers.query.filter_by(teacher_id).first()
+    return render_template('teacher2.html', teacher=teacher)
 
 @app.route("/profile")
 @login_required
