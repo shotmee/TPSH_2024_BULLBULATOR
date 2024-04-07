@@ -34,9 +34,9 @@ login_manager = LoginManager(app)
 
 
 @login_manager.user_loader
-def load_user(profile_id):
+def load_user(id):
     # print("load_user")
-    return profiles.query.get(int(profile_id))
+    return profiles.query.get(int(id))
 
 @app.route('/redirect', methods=['GET', 'POST'])
 def login():
@@ -168,7 +168,7 @@ def view_teacher(teacher_id):
 #         depth = request.form['depth']
 #         humor = request.form['humor']
 
-#         profile_id = current_user.profile_id
+#         profile_id = current_user.id
 
 #         new_feedback = feedback_for_teacher(teacher_id, main_rating,availability, objectivity,
 #                  creative, depth, humor, profile_id)
@@ -185,7 +185,7 @@ def profile():
     firstname = current_user.firstname
     middlename = current_user.middlename
     lastname = current_user.lastname
-    user_id = current_user.profile_id
+    user_id = current_user.id
 
     if request.method == 'POST':
         user = profiles.query.get(user_id)
@@ -218,7 +218,7 @@ def lesson(cellsschedule_id):
         depth = request.form['depth']
         humor = request.form['humor']
 
-        profile_id = current_user.profile_id
+        profile_id = current_user.id
 
         new_feedback = feedback(cellsschedule_id, main_rating,availability, objectivity,
                  creative, depth, humor, profile_id)
