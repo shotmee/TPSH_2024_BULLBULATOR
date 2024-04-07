@@ -116,7 +116,7 @@ def redirect_page3():
 
 @app.route('/redirect4', methods=['GET'])
 def redirect_page4():
-    return redirect('/<int:teacher_id>')
+    return redirect('/teacher_1')
 
 @app.route("/")
 def main():
@@ -125,20 +125,22 @@ def main():
 @app.route("/ShowTeachers")
 @login_required
 def index():
-    teachers = teachers.query.limit(10).all()
-    return render_template('teachers_page.html', teachers=teachers)
+    ateachers = teachers.query.limit(10).all()
+    return render_template('teachers_page.html', teachers=ateachers)
 
 @app.route('/schedule')
 @login_required
 def schedule():
     return render_template('schedule.html')
 
-@app.route('/<int:teacher_id>')
+@app.route('/teacher_1')
 @login_required
-def view_teacher(teacher_id):
-    teacher = teachers.query.filter_by(teacher_id=teacher_id).first()
-    fullname = teacher.fullName
+def view_teacher():
+    teacher_id=1
+    teacher = teachers.query.filter_by(id=teacher_id).first()
+    fullName = teacher.fullName
 
+    lessons = db.session.query(lessons).join(cellsschedule).filter(cellsschedule.teacher_id == teacher_id).all()
 
     feedbacks_for_teachers_lessons = db.session.query(feedback).join(
         cellsschedule, cellsschedule.id == feedback.cellsschedule_id).join(
@@ -149,8 +151,8 @@ def view_teacher(teacher_id):
         feedback_for_teacher).join(
             teachers, teachers.id == feedback_for_teacher.teacher_id).filter(
                 teachers.id == teacher_id).all()
-
-    return render_template('teacher.html', teacher=teacher)
+    print(feedback_for_teacher)
+    return render_template('teacher2.html', lesson= 'edfw', grades='sefw')
 
 
 # @app.route('/<int:teacher_id>/feedback', methods=['GET', 'POST'])
@@ -199,7 +201,7 @@ def profile():
             user.lastname = new_lastname
             db.session.commit()
 
-    return render_template("cabinet.html", title="Профиль")
+    return render_template("cabinet.html", title="Профиль", firstname=firstname, middlename=middlename, lastname=lastname, user_id=user_id)
 #    return render_template("cabinet.html", menu=dbase.getMenu(), title="Профиль")
 
 @app.route("/<int:lesson_id>", methods=['GET', 'POST'])
