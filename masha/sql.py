@@ -1,77 +1,154 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import *
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin 
 
-engine = create_engine('sqlite:///dbase.db')
-Base = declarative_base()
+db = SQLAlchemy()
 
+#Модель профиля
+class profiles(UserMixin, db.Model):
+    __tablename__ = 'profiles'
+    id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(150))
+    middlename = db.Column(db.String(150))
+    lastname = db.Column(db.String(150))
+    username = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(128))
 
-class Users: ...
-class Teacher: ...
-class Subjects:...
-class Feedback: ...
-class Feedback2: ...
-class Timetable: ...
-
-
-class Feedback(Base):
-    __tablename__ = 'feedback'
     
-    fb_id = Column(Integer, primary_key=True)
-    rating = Column(Integer)
-    text = Column(String)
-    teacher_id = Column(Integer, ForeignKey('teachers.id'))
-    teacher = relationship("Teacher", back_populates="feedback")
+    grade_id = db.Column(db.Integer, db.ForeignKey('grades.id'), nullable=False)
+    grade = db.relationship('grades', backref='students')
 
+    def __init__(self, firstname=None, middlename=None, lastname=None, username=None, password=None, grade_id=None):
+        self.firstname = firstname
+        self.middlename = middlename
+        self.lastname = lastname
+        self.username = username
+        self.password = password
+        self.grade_id = grade_id
+    
+    def check_password(self, another_password):
+        if self.password == another_password:
+            return True
+        return False
+    
+    def __repr__(self):
+        return '<profiles %r>'%(self.name)
 
-class Teacher(Base):
+# Модель класса учебы (готов)
+class grades(db.Model):
+    __tablename__ = 'grades'
+    id = db.Column(db.Integer, primary_key=True)
+    number = db.Column(db.Integer, unique=True)
+    symbol = db.Column(db.String(2))
+
+    def __init__(self, number=None, symbol=None):
+        self.number = number
+        self.symbol = symbol
+    
+    def __repr__(self):
+        return '<grades %r>'%(self.name)
+
+# Модель урока (готово)
+class lessons(db.Model):
+    __tablename__ = 'lessons'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=True)
+
+    def __init__(self, name=None):
+        self.name = name
+    
+    def __repr__(self):
+        return '<lessons %r>'%(self.name)
+
+# Модель дня недели (day_of_the_week) (готово)
+class daysweek(db.Model):
+    __tablename__ = 'daysweek'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(15), unique=True)
+
+    def __init__(self, name=None):
+        self.name = name
+
+    def __repr__(self):
+        return '<daysweek %r>'%(self.name)
+
+# Модель ячейки в расписании в дне недели (time_of_the_lessons) (готово)
+class timelessons(db.Model):
+    __tablename__ = 'timelessons'
+    id = db.Column(db.Integer, primary_key=True)
+    number = db.Column(db.Integer)
+
+    day_id = db.Column(db.Integer, db.ForeignKey('daysweek.id'), nullable=False)
+    day = db.relationship('daysweek', backref='timelessons')
+
+    def __init__(self, number=None, day_id=None):
+        self.number = number
+        self.day = day_id
+
+    def __repr__(self):
+        return '<timelessons %r>'%(self.name)
+    
+# Модель преподавателя (готов)
+class teachers(db.Model):
     __tablename__ = 'teachers'
+    id = db.Column(db.Integer, primary_key=True)
+    fullName = db.Column(db.String(150))
 
-    id = Column(Integer, primary_key=True)
-    teacher_name = Column(String)
-    subject = Column(String)
-    teacher_password = Column(String)
-    feedback = relationship("Feedback", back_populates="teacher")
+    def __init__(self, fullName=None):
+        self.fullName = fullName
+    
+    def __repr__(self):
+        return '<teachers %r>'%(self.name)
 
-class Users(Base):
-    __tablename__ = 'users'
+# Модель ячейки расписания (готов)
+class cellsschedule(db.Model):
+    __tablename__ = 'cellsschedule'
+    id = db.Column(db.Integer, primary_key=True)
+    lesson_name = db.Column(db.String(20), db.ForeignKey('lessons.name'), nullable=False)
 
-    user_id = Column(Integer, primary_key=True)
-    username = Column(String)
-    password = Column(String)
-    grade = Column(Integer)
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.id'), nullable=False)
+    teacher = db.relationship('teachers', backref='lessons')
 
-class Subjects(Base):
-    __tablename__ = 'subjects'
+    grades_id = db.Column(db.Integer, db.ForeignKey('grades.id'), nullable=False)
+    grade = db.relationship('grades', backref='lessons')
 
-    subj_id = Column(Integer, primary_key=True)
-    subject = Column(String)
-    teacher = Column(String)
-    grade = Column(Integer)
+    number_id = db.Column(db.Integer, db.ForeignKey('timelessons.id'), nullable=False)
+    number = db.Column(db.Integer, db.ForeignKey('timelessons.number'), nullable=False)
 
-class Timetable(Base):
-    __tablename__ = 'timetables'
+    def __init__(self, number=None, day_id=None):
+        self.number = number
+        self.day = day_id
 
-    id = Column(Integer, primary_key=True)
-    subject = Column(String)
-    teacher_name = Column(String)
-    grade = Column(Integer)
-    wd = Column(String)
-    numb = Column(Integer)
+    def __repr__(self):
+        return '<cellsschedule %r>'%(self.name)
 
-    feedback2 = relationship("Feedback2", back_populates="timetable")
+# Модель одного отзыва
+# Модель одного отзыва
+class feedback(db.Model):
+    __tablename__ = 'feedback'
+    id = db.Column(db.Integer, primary_key=True)
 
-class Feedback2(Base):
-    __tablename__ = 'feedback2'
+    cellsschedule_id = db.Column(db.Integer, db.ForeignKey('cellsschedule.id'), nullable=False)
+    cellschedule = db.relationship('cellsschedule', backref='feedback')
 
-    id = Column(Integer, primary_key=True)
-    tt_id = Column(Integer)
-    rate0 = Column(Integer)
+    main_rating = db.Column(db.Integer)
+    availability = db.Column(db.String(300))
+    objectivity = db.Column(db.String(300))
+    creative = db.Column(db.String(300))
+    depth = db.Column(db.String(300))
+    humor = db.Column(db.String(300))
+    profile_id = db.Column(db.Integer, db.ForeignKey('profiles.id'), nullable=False)
+    profile = db.relationship('profiles', backref='feedbacks')
 
-    timetable_id = Column(Integer, ForeignKey('timetables.id'))
-    timetable = relationship('Timetable', 
-                             back_populates='feedback2', 
-                             primaryjoin="Feedback2.timetable_id == Timetable.id"
-                             ) 
-
-Base.metadata.create_all(engine)
+    def __init__(self, cellsschedule_id=None, main_rating=None,availability=None, objectivity=None,
+                 creative=None, depth=None, humor=None, profile_id=None):
+        self.cellsschedule_id = cellsschedule_id
+        self.main_rating = main_rating
+        self.availability = availability
+        self.objectivity = objectivity
+        self.creative = creative
+        self.depth = depth
+        self.humor = humor
+        self.profile_id = profile
+    
+    def __repr__(self):
+        return '<feedback %r>'%(self.name)
