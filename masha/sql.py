@@ -114,6 +114,9 @@ class cellsschedule(db.Model):
     number_id = db.Column(db.Integer, db.ForeignKey('timelessons.id'), nullable=False)
     number = db.Column(db.Integer, db.ForeignKey('timelessons.number'), nullable=False)
 
+    day_name = db.Column(db.Integer, db.ForeignKey('daysweek.name'), nullable=False)
+    day = db.relationship('daysweek', backref='lessons')
+
     def __init__(self, number=None, day_id=None):
         self.number = number
         self.day = day_id
@@ -121,7 +124,6 @@ class cellsschedule(db.Model):
     def __repr__(self):
         return '<cellsschedule %r>'%(self.name)
 
-# Модель одного отзыва
 # Модель одного отзыва
 class feedback(db.Model):
     __tablename__ = 'feedback'
@@ -148,7 +150,37 @@ class feedback(db.Model):
         self.creative = creative
         self.depth = depth
         self.humor = humor
-        self.profile_id = profile
+        self.profile_id = profile_id
+    
+    def __repr__(self):
+        return '<feedback %r>'%(self.name)
+    
+class feedback_for_teacher(db.Model):
+    __tablename__ = 'feedback_for_teacher'
+    id = db.Column(db.Integer, primary_key=True)
+
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.id'), nullable=False)
+    teacher = db.relationship('teachers', backref='feedback')
+
+    main_rating = db.Column(db.Integer)
+    availability = db.Column(db.String(300))
+    objectivity = db.Column(db.String(300))
+    creative = db.Column(db.String(300))
+    depth = db.Column(db.String(300))
+    humor = db.Column(db.String(300))
+    profile_id = db.Column(db.Integer, db.ForeignKey('profiles.id'), nullable=False)
+    profile = db.relationship('profiles', backref='feedbacks_teachers')
+
+    def __init__(self, cellsschedule_id=None, main_rating=None,availability=None, objectivity=None,
+                 creative=None, depth=None, humor=None, profile_id=None):
+        self.cellsschedule_id = cellsschedule_id
+        self.main_rating = main_rating
+        self.availability = availability
+        self.objectivity = objectivity
+        self.creative = creative
+        self.depth = depth
+        self.humor = humor
+        self.profile_id = profile_id
     
     def __repr__(self):
         return '<feedback %r>'%(self.name)
